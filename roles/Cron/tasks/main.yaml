@@ -1,0 +1,11 @@
+- name: Daily reboot at 04:00 o'clock
+  tags: cron  
+  cron:
+    name: "daily reboot at 04:00 o'clock"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    minute: '0'
+    hour: '4'
+    job: "reboot"
+  when: ansible_distribution == "Ubuntu"      

@@ -1,0 +1,14 @@
+---
+
+- hosts: localhost
+  become: yes
+  roles:
+    - UFW
+    - Cron
+    - SSH
+
+
+
+
+
+

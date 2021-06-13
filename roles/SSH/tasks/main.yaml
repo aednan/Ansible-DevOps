@@ -1,0 +1,8 @@
+- name: Disabling SSH password authentication
+  tags: ssh
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#?\s*PasswordAuthentication (yes|no)\s'
+    line: 'PasswordAuthentication no'
+    state: present
+  when: ansible_distribution == "Ubuntu"      

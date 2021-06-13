@@ -1,0 +1,63 @@
+- name: install ufw if not exist
+  tags: ufw
+  apt:
+   name: ufw
+   state: present
+  when: ansible_distribution == "Ubuntu"  
+
+- name: enable UFW
+  tags: ufw    
+  ufw:
+   state: enabled
+  when: ansible_distribution == "Ubuntu"  
+   
+- name: deny default in
+  tags: ufw     
+  ufw:
+   direction: incoming
+   policy: deny
+  when: ansible_distribution == "Ubuntu"  
+  
+- name: UFW - Allow port 22
+  tags: ufw     
+  ufw:
+   rule: alow
+   port: 22
+  when: ansible_distribution == "Ubuntu"  
+  
+- name: UFW - Allow port 80
+  tags: ufw     
+  ufw:
+   rule: alow
+   port: 80    
+  when: ansible_distribution == "Ubuntu"  
+  
+- name: UFW - Allow port 443
+  tags: ufw     
+  ufw:
+   rule: alow
+   port: 443
+  when: ansible_distribution == "Ubuntu"  
+  
+- name: UFW - Allow port 110
+  tags: ufw     
+  ufw:
+   rule: alow
+   port: 110
+  when: ansible_distribution == "Ubuntu"  
+  
+- name: UFW - Allow port 587
+  tags: ufw     
+  ufw:
+   rule: alow
+   port: 587
+  when: ansible_distribution == "Ubuntu"  
+  
+- name: restart ufw to apply changes
+  tags: ufw     
+  service:
+   name: ufw
+   state: restart
+  when: ansible_distribution == "Ubuntu"  
+  
+    
